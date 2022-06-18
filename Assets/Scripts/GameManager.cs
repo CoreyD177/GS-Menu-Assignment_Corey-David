@@ -27,10 +27,13 @@ public class GameManager : MonoBehaviour
     private MenuHandler _menuHandler;
     #endregion
     #region Initial Load
-    public void Start()
-    {       
+    private void Awake()
+    {
         //Retrieve the MenuHandler class from the optionsholder object
         _menuHandler = GameObject.Find("OptionsHolder").GetComponent<MenuHandler>();
+    }
+    public void Start()
+    {               
         //If we are in the game scene check if we are loading and load the appropriate file based on index saved in PlayerPrefs
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
