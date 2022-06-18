@@ -78,18 +78,10 @@ public class MenuHandler : MonoBehaviour
         //Refresh the dropdown menu so it shows the correct current value
         resolution.RefreshShownValue();
         #endregion
-        //If we have a positive value for mute in PlayerPrefs set that sliders value to -80 to be muted
-        if (PlayerPrefs.GetInt("MasterMute") == 1)
+        //Load settings if we have settings available
+        if (PlayerPrefs.HasKey(masterVolume.name))
         {
-            masterAudio.SetFloat("masterVolume", -80);
-        }
-        if (PlayerPrefs.GetInt("MusicMute") == 1)
-        {
-            masterAudio.SetFloat("musicVolume", -80);
-        }
-        if (PlayerPrefs.GetInt("SFXMute") == 1)
-        {
-            masterAudio.SetFloat("sfxVolume", -80);
+            _gameManager.LoadSettings();
         }
     }
     #endregion
